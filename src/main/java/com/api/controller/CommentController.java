@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "comment")
 public class CommentController implements IController {
@@ -16,7 +18,7 @@ public class CommentController implements IController {
     private IMessagingService service;
 
     @PostMapping
-    public ResponseEntity create(@RequestBody CommentDto commentDto){
+    public ResponseEntity create(@Valid @RequestBody CommentDto commentDto){
         this.service.sendMessage(MessagingConstants.COMMENT_QUEUE, commentDto);
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }

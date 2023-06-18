@@ -10,6 +10,5 @@ public class CommentConsumer implements IConsumer{
 
     @RabbitListener(queues = MessagingConstants.COMMENT_QUEUE)
     public void consumer(CommentDto commentDto){
-        commentDto.text();
     }
 }
