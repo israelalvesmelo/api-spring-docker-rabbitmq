@@ -1,4 +1,4 @@
-package com.api.consumer.config;
+package com.api.consumer.impl.config;
 
 import com.api.exceptions.ConsumerRabbitMqHandler;
 import org.springframework.amqp.core.AcknowledgeMode;

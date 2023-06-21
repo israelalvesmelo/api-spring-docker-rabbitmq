@@ -1,5 +1,6 @@
-package com.api.conections.messaging;
+package com.api.conections.messaging.impl;
 
+import com.api.conections.messaging.IMessageConnection;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
@@ -11,7 +12,7 @@ import javax.annotation.PostConstruct;
 
 
 @Configuration
-public class RabbitMQConnection {
+public class RabbitMQConnection implements IMessageConnection {
     private final AmqpAdmin amqpAdmin;
 
     @Autowired
@@ -33,10 +34,10 @@ public class RabbitMQConnection {
     }
 
     @PostConstruct
-    private void add(){
-        Queue queue = this.createQueue(MessagingConstants.COMMENT_QUEUE);
+    public void createConnection(){
+        Queue queue = this.createQueue(MessageConstants.COMMENT_QUEUE);
 
-        DirectExchange exchange = this.createDirectExchange(MessagingConstants.EXCHANGE_NAME);
+        DirectExchange exchange = this.createDirectExchange(MessageConstants.EXCHANGE_NAME);
 
         Binding binding = this.createBinding(queue, exchange);
 

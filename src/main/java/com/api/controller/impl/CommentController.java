@@ -1,6 +1,6 @@
 package com.api.controller.impl;
 
-import com.api.conections.messaging.MessagingConstants;
+import com.api.conections.messaging.impl.MessageConstants;
 import com.api.controller.IController;
 import com.api.dto.CommentDto;
 import com.api.service.IMessagingService;
@@ -20,7 +20,7 @@ public class CommentController implements IController {
 
     @PostMapping
     public ResponseEntity create(@Valid @RequestBody CommentDto commentDto){
-        this.service.sendMessage(MessagingConstants.COMMENT_QUEUE, commentDto);
+        this.service.sendMessage(MessageConstants.COMMENT_QUEUE, commentDto);
         return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 }
