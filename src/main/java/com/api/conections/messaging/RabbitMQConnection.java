@@ -4,15 +4,17 @@ import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
 
-@Component
+@Configuration
 public class RabbitMQConnection {
-    private AmqpAdmin amqpAdmin;
+    private final AmqpAdmin amqpAdmin;
 
+    @Autowired
     public RabbitMQConnection(AmqpAdmin amqpAdmin){
         this.amqpAdmin = amqpAdmin;
     }

@@ -1,6 +1,7 @@
-package com.api.controller;
+package com.api.controller.impl;
 
 import com.api.conections.messaging.MessagingConstants;
+import com.api.controller.IController;
 import com.api.dto.CommentDto;
 import com.api.service.IMessagingService;
 import org.springframework.beans.factory.annotation.Autowired;
